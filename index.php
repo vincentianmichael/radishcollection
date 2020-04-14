@@ -165,4 +165,33 @@ function hapus($koneksi){
 
 
 // ===================================================================
+// --- Program Utama
+if (isset($_GET['aksi'])){
+	switch($_GET['aksi']){
+		case "create":
+			echo '<a href="index.php"> &laquo; Home</a>';
+			tambah($koneksi);
+			break;
+		case "read":
+			tampil_data($koneksi);
+			break;
+		case "update":
+			ubah($koneksi);
+			tampil_data($koneksi);
+			break;
+		case "delete":
+			hapus($koneksi);
+			break;
+		default:
+			echo "<h3>Aksi <i>".$_GET['aksi']."</i> tidaka ada!</h3>";
+			tambah($koneksi);
+			tampil_data($koneksi);
+	}
+} else {
+	tambah($koneksi);
+	tampil_data($koneksi);
+}
 
+?>
+</body>
+</html>
