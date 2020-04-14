@@ -144,3 +144,25 @@ function ubah($koneksi){
 	
 }
 // --- Tutup Fungsi Update
+	
+// --- Fungsi Delete
+function hapus($koneksi){
+
+	if(isset($_GET['kode']) && isset($_GET['aksi'])){
+		$kode = $_GET['kode'];
+		$sql_hapus = "DELETE FROM databatik WHERE kode=" . $kode;
+		$hapus = mysqli_query($koneksi, $sql_hapus);
+		
+		if($hapus){
+			if($_GET['aksi'] == 'delete'){
+				header('location: index.php');
+			}
+		}
+	}
+	
+}
+// --- Tutup Fungsi Hapus
+
+
+// ===================================================================
+
